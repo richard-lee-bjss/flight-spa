@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "program": "${workspaceRoot}/app/app.module.js",
+        //     "cwd": "${workspaceRoot}",
+        //     "outFiles": [],
+        //     "sourceMaps": true
+        // },
+        // {
+        //     "type": "node",
+        //     "request": "attach",
+        //     "name": "Attach to Process",
+        //     "port": 5858,
+        //     "outFiles": [],
+        //     "sourceMaps": true
+        // },
+        {
+            "name": "Launch localhost with sourcemaps",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000/index.html",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true
+        },
+        {
+            "name": "Attach with sourcemaps",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "sourceMaps": true,
+            "url": "http://localhost:3000"
+        },
+        {
+            "name": "Attach to url with files served from ./out",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "url": "<url of the open browser tab to connect to>",
+            "webRoot": "${workspaceRoot}/out"
+        }
+    ]
+}

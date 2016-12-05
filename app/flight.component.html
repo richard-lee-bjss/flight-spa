@@ -1,0 +1,13 @@
+<div>
+    <label>Flight Search: </label>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+<h4>Search Results</h4>
+<ul> <!-- class="heroes"> -->
+    <li *ngFor="let flight of this.searchResults"
+        [class.selected]="flight === selectedFlight"
+        (click)="onSelect(flight)">
+    <span class="badge">{{flight.id}}</span><button (click)="gotoDetail(flight.id)">View Details</button><br/>
+    <span>{{flight.flightNumber.carrierCode}} {{flight.flightNumber.number}}</span>
+    </li>
+</ul>
