@@ -1,0 +1,32 @@
+<div>
+    <label>Flight Search: </label>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+    <h4>Search Results</h4>
+    <ul class="flights">
+        <li *ngFor="let flight of this.searchResults"
+            [class.selected]="flight === selectedFlight"
+            (click)="onSelect(flight)">
+            <span class="badge">{{flight.id}}</span><br/>
+        </li>
+    </ul>
+    <div *ngIf="selectedFlight">
+        <h4>{{selectedFlight.id}}</h4>
+        <label>Flight Number: </label><span>{{selectedFlight.flightNumber.carrierCode}} {{selectedFlight.flightNumber.number}}</span><br/>
+        <label>Departure Airport: </label><span>{{selectedFlight.departureAirport}}</span><br/>
+        <label>Arrival Airport: </label><span>{{selectedFlight.arrivalAirport}}</span><br/>
+        <label>Departure Terminal: </label><span>{{selectedFlight.depTerminalName}}</span><br/>
+        <label>Departure Time: </label><span>{{selectedFlight.localDepartureTime | date: 'medium' }}</span><br/>
+        <label>Arrival Time: </label><span>{{selectedFlight.localArrivalTime | date: 'medium'}}</span><br/>
+        <label>Disrupted: </label><span>{{selectedFlight.isDisrupted}} </span><br/>
+        <label>Number of Seats Available: </label><span>{{selectedFlight.seatsAvailable}}</span><br/>
+        <label>Adult Price: </label><span>{{selectedFlight.prices.adult?.value}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{selectedFlight.prices.adult?.valueWithDebitCard}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{selectedFlight.prices.adult?.valueWithCreditCard}}</span><br/>
+        <label>Child Prices: </label><span>{{selectedFlight.prices.child?.value}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{selectedFlight.prices.child?.valueWithDebitCard}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{selectedFlight.prices.child?.valueWithDebitCard}}</span><br/>
+        <label>Infant Prices: </label><span>{{selectedFlight.prices.infant?.value}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{selectedFlight.prices.infant?.valueWithDebitCard}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{selectedFlight.prices.infant?.valueWithCreditCard}}</span><br/>
+    </div>

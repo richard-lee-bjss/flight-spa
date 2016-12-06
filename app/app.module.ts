@@ -10,9 +10,8 @@ import { AppComponent } from './app.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
-import { FlightComponent } from './flight.component';
-import { FlightDetailComponent } from './flight-detail.component';
-import { FlightService } from './flight.service';
+import { FlightsComponent } from './flights.component';
+import { FlightsService } from './flights.service';
 // import { FlightSearchComponent }  from './flight-search.component';
 
 @NgModule({
@@ -20,13 +19,12 @@ import { FlightService } from './flight.service';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
 ],
   declarations: [
     AppComponent,
-    FlightComponent,
-    FlightDetailComponent],
-  providers: [FlightService],
+    FlightsComponent],
+  providers: [FlightsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -246,7 +246,7 @@ const FLIGHTS: Flight[] = [
 
 
 @Injectable()
-export class FlightService {
+export class FlightsService {
 
     private flightsUrl = 'http://ejtestbed.herokuapp.com/flights'; // URL to web api
     // private headers = new Headers({'Content-Type': 'application/json'});
