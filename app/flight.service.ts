@@ -15,6 +15,10 @@ export class FlightService {
 
     getFlight(id: string): Promise<Flight> {
 
+        /* I realise I'm calling out twice - once for the full list and then once for the details. 
+        I'd like to get the detailfromform the flights stored on the flightComponent, but can't see how to get the id param out from 
+        */
+
         return this.getFlights()
             .then(flights => flights.find(flight => flight.id === id));
     }

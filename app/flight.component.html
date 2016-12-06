@@ -5,8 +5,7 @@
     <li *ngFor="let flight of this.searchResults"
     [class.selected]="flight === selectedFlight"
     (click)="onSelect(flight)">
-    <span class="badge" (click)="gotoDetail(flight.id)">{{flight.id}}</span>
-    <!--<button (click)="gotoDetail(flight.id)">View Details</button><br/>-->
+    <span class="badge" [routerLink]="['/detail', flight.id]">{{flight.id}}</span>
+    <!--<span class="badge" (click)="gotoDetail(flight.id)">{{flight.id}}</span>-->
     </li>
 </ul>
-<!--<my-flight-detail [flight]="selectedFlight"></my-flight-detail>-->

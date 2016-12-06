@@ -25,6 +25,11 @@ export class FlightComponent implements OnInit {
         this.getFlights();
     }
 
+    getFlight(id: string): Flight {
+
+        return this.flights.find(f => f.id === id);
+    }
+
     private getFlights(): void {
 
         this.flightService.getFlights()
@@ -33,10 +38,6 @@ export class FlightComponent implements OnInit {
 
     onSelect(flight: Flight) {
         this.selectedFlight = flight;
-    }
-
-    gotoDetail(id: string): void {
-        this.router.navigate(['/detail', id]);
     }
 
     search(value: string): void {

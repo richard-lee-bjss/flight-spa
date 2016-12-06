@@ -20,7 +20,7 @@ import { FlightService } from './flight.service';
     AppComponent,
     FlightComponent,
     FlightDetailComponent],
-  providers: [FlightService],
+  providers: [FlightService], //, FlightComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
