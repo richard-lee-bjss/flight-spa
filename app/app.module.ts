@@ -6,25 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-// Imports for loading & configuring the in-memory web api.
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-
-import { FlightsComponent } from './flights.component';
-import { FlightsService } from './flights.service';
-// import { FlightSearchComponent }  from './flight-search.component';
+import { FlightComponent } from './flight.component';
+import { FlightDetailComponent } from './flight-detail.component';
+import { FlightService } from './flight.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpModule
 ],
   declarations: [
     AppComponent,
-    FlightsComponent],
-  providers: [FlightsService],
+    FlightComponent,
+    FlightDetailComponent],
+  providers: [FlightService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

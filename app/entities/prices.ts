@@ -1,7 +1,9 @@
 import { Price } from './price';
 
 export class Prices {
-  adult: Price;
-  child: Price;
-  infant: Price;
+
+  constructor(
+  public adult: Price,
+  public child: Price,
+  public infant: Price) {}
 }

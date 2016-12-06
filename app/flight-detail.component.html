@@ -1,0 +1,22 @@
+<div *ngIf="flight">
+    <h2>{{flight.id}} Details</h2>
+    <div><label>Flight Number: </label><span>{{flight.flightNumber.carrierCode}} {{flight.flightNumber.number}}</span><br/>
+        <label>Departure Airport: </label><span>{{flight.departureAirport}}</span><br/>
+        <label>Arrival Airport: </label><span>{{flight.arrivalAirport}}</span><br/>
+        <label>Departure Terminal: </label><span>{{flight.depTerminalName}}</span><br/>
+        <label>Departure Time: </label><span>{{flight.localDepartureTime | date: 'medium' }}</span><br/>
+        <label>Arrival Time: </label><span>{{flight.localArrivalTime | date: 'medium'}}</span><br/>
+        <label>Disrupted: </label><span>{{flight.isDisrupted}} </span><br/>
+        <label>Number of Seats Available: </label><span>{{flight.seatsAvailable}}</span><br/>
+        <label>Adult Price: </label><span>{{flight.prices.adult?.value | currency: 'GPB':true:'1.2-2'}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{flight.prices.adult?.valueWithDebitCard}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{flight.prices.adult?.valueWithCreditCard}}</span><br/>
+        <label>Child Prices: </label><span>{{flight.prices.child?.value}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{flight.prices.child?.valueWithDebitCard}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{flight.prices.child?.valueWithDebitCard}}</span><br/>
+        <label>Infant Prices: </label><span>{{flight.prices.infant?.value}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{flight.prices.infant?.valueWithDebitCard}}</span><br/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{flight.prices.infant?.valueWithCreditCard}}</span>
+    </div>
+</div>
+<button (click)="goBack()">Back</button><br/>

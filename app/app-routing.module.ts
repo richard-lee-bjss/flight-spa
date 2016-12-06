@@ -1,11 +1,13 @@
 import { NgModule }      from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FlightsComponent }  from './flights.component';
+import { FlightDetailComponent }  from './flight-detail.component';
+import { FlightComponent }  from './flight.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/flights', pathMatch: 'full' },
-    { path: 'flights', component: FlightsComponent },
+    { path: '', redirectTo: '/flight', pathMatch: 'full' },
+    { path: 'flight', component: FlightComponent },
+    { path: 'detail/:id', component: FlightDetailComponent }
 ];
 
 @NgModule({

@@ -2,31 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Flight } from './entities/flight';
-import { FlightsService } from './flights.service';
+import { FlightService } from './flight.service';
 
 @Component({
     moduleId: module.id,
     selector: 'my-flights',
-    templateUrl: 'flights.component.html',
-    styleUrls: [ 'flights.component.css' ],
-    providers: [FlightsService]
+    templateUrl: 'flight.component.html',
+    styleUrls: [ 'flight.component.css' ]
 })
 
-export class FlightsComponent implements OnInit {
+export class FlightComponent implements OnInit {
 
-    flights: Flight[] = [];
-    searchResults: Flight[] = [];
-    selectedFlight: Flight;
+    private flights: Flight[] = [];
+    private searchResults: Flight[] = [];
+    private selectedFlight: Flight;
 
     constructor(
         private router: Router,
-        private flightService: FlightsService) { }
+        private flightService: FlightService) { }
 
     ngOnInit() {
         this.getFlights();
     }
 
-    getFlights(): void {
+    private getFlights(): void {
 
         this.flightService.getFlights()
             .then(flights => this.flights = flights);
@@ -36,17 +35,21 @@ export class FlightsComponent implements OnInit {
         this.selectedFlight = flight;
     }
 
+    gotoDetail(id: string): void {
+        this.router.navigate(['/detail', id]);
+    }
+
     search(value: string): void {
 
-        // clear the details div when a fresh search is started.
+        // clear the details when a fresh search is started.
         this.selectedFlight = null;
-
         this.searchResults = [];
-        value = value.toUpperCase();
 
         if (value.length <= 0) {
             return;
         }
+
+        value = value.toUpperCase();
 
         for (let flight of this.flights) {
             // search for id
@@ -80,7 +83,5 @@ export class FlightsComponent implements OnInit {
                 continue;
             }
         }
-
-
     }
 }

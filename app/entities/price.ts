@@ -1,5 +1,8 @@
 export class Price {
-    value: number; // integer values.Scale x100 for display.
-    valueWithDebitCard: number; // integer values.Scale x100 for display.
-    valueWithCreditCard: number; // integer values.Scale x100 for display.y
+
+    constructor (
+    public value: number, // integer values.Scale x100 for display.
+    public valueWithDebitCard: number, // integer values.Scale x100 for display.
+    public valueWithCreditCard: number // integer values.Scale x100 for display.y
+    ) {}
 }

@@ -1,5 +1,7 @@
 export class FlightNumber {
-  carrierCode: string;
-  number: number;
+
+  constructor(
+  public carrierCode: string,
+  public number: number) {}
 }
 

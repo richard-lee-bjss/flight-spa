@@ -1,8 +1,7 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+export class TestFlightsJSON {
+    static getData() {
 
-export class InMemoryDataService implements InMemoryDbService {
-    createDb() {
-        let flights = [
+        let flightsJSON = [
             {
                 'id': 'EZ001',
                 'flightNumber': {
@@ -10,7 +9,7 @@ export class InMemoryDataService implements InMemoryDbService {
                     'number': 5407
                 },
                 'departureAirport': 'London Luton (LTN)',
-                'departureAirportCode': 'LGW',
+                'departureAirportCode': 'LPT',
                 'arrivalAirport': 'Berlin Schoenefeld (SXF)',
                 'arrivalAirportCode': 'SXF',
                 'depTerminalName': 'South Terminal',
@@ -29,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
                         'valueWithDebitCard': 40.99,
                         'valueWithCreditCard': 41.81
                     },
-                    'infant': {} // i.e. null
+                    'infant': {} // TODO handle null in JSON
                 }
             },
             {
@@ -236,7 +235,6 @@ export class InMemoryDataService implements InMemoryDbService {
                 }
             }
         ];
-
-        return { flights };
+        return {flightsJSON };
     }
 }
