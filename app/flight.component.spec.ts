@@ -40,6 +40,7 @@ describe('FlightsComponent', function () {
         comp = fixture.componentInstance;
 
         fakeService = TestBed.get(FlightService);
+        searchEl = fixture.debugElement.query(By.css('#search-box'));
     });
 
     it('should create component', () => expect(comp).toBeDefined());
@@ -55,16 +56,29 @@ describe('FlightsComponent', function () {
         expect(spy.calls.count()).toBe(1, 'getFlights called');
     });
 
-    it('should not display flight numbers for an empty search term', () => {
+    it('should not display flight numbers for an empty search term (fakeAsync)', fakeAsync(() => {
 
-    });
+        // this test case corresponds to deleting serch terms from the search box
+
+        // let service promises be resolved for data via ngOnInit
+        fixture.detectChanges();
+        tick();
+        searchEl.nativeElement.value = '';
+        searchEl.triggerEventHandler('keyup', null);
+        fixture.detectChanges();
+        tick();
+
+        listEls = fixture.debugElement.queryAll(By.css('.badge'));
+        expect(listEls.length).toEqual(0,
+            'should not display flight numbers for an empty search term (fakeAsync)');
+
+    }));
 
     it('should display flight numbers for a valid search term (fakeAsync)', fakeAsync(() => {
 
         // let service promises be resolved for data via ngOnInit
         fixture.detectChanges();
         tick();
-        searchEl = fixture.debugElement.query(By.css('#search-box'));
         searchEl.nativeElement.value = 'e';
         searchEl.triggerEventHandler('keyup', null);
         fixture.detectChanges();
@@ -84,7 +98,6 @@ describe('FlightsComponent', function () {
         // let service promises be resolved for data via ngOnInit
         fixture.detectChanges();
         tick();
-        searchEl = fixture.debugElement.query(By.css('#search-box'));
         searchEl.nativeElement.value = 'qqq';
         searchEl.triggerEventHandler('keyup', null);
         fixture.detectChanges();
