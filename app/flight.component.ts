@@ -8,7 +8,7 @@ import { FlightService } from './flight.service';
     moduleId: module.id,
     selector: 'my-flights',
     templateUrl: 'flight.component.html',
-    styleUrls: [ 'flight.component.css' ]
+    styleUrls: ['flight.component.css']
 })
 
 export class FlightComponent implements OnInit {
@@ -40,6 +40,10 @@ export class FlightComponent implements OnInit {
         this.selectedFlight = flight;
     }
 
+    gotoDetail() {
+        this.router.navigate(['./detail', this.selectedFlight.id]);
+    }
+    
     search(value: string): void {
 
         // clear the details when a fresh search is started.

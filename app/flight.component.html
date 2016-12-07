@@ -2,10 +2,12 @@
 <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 
 <ul class="flights">
-    <li *ngFor="let flight of this.searchResults"
-    [class.selected]="flight === selectedFlight"
-    (click)="onSelect(flight)">
-    <span class="badge" [routerLink]="['/detail', flight.id]">{{flight.id}}</span>
-    <!--<span class="badge" (click)="gotoDetail(flight.id)">{{flight.id}}</span>-->
+    <li *ngFor="let flight of this.searchResults" [class.selected]="flight === selectedFlight" (click)="onSelect(flight)">
+        <span class="badge">{{flight.id}}</span>
+        <!--<span class="badge" [routerLink]="['/detail', flight.id]">{{flight.id}}</span>-->
+        <!--<span class="badge" (click)="gotoDetail(flight.id)">{{flight.id}}</span>-->
     </li>
 </ul>
+<div *ngIf="selectedFlight">
+    <button (click)="gotoDetail(selectedFlight.id)">View Details</button>
+</div>
