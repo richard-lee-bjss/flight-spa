@@ -8,14 +8,14 @@ import { SpyLocation } from '@angular/common/testing';
 import { FlightComponent } from './flight.component';
 
 import { FlightService } from './flight.service';
-import { FakeFlightService } from './fake-flight.service';
+import { FakeFlightService } from './test/fake-flight.service';
 import { Router } from '@angular/router';
 import { RouterStub } from './test/router-stub';
 
-import { FLIGHTS } from './test/test-flights';
+import { FLIGHTS } from './test/test-flightsJSON';
 
 ////////  SPECS  /////////////
-describe('FlightsComponent', function () {
+describe('FlightComponent', function () {
     let de: DebugElement;
     let searchEl: DebugElement;
     let listEls: DebugElement[];

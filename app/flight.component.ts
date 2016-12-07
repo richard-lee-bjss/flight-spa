@@ -46,9 +46,6 @@ export class FlightComponent implements OnInit {
 
     search(value: string): void {
 
-        console.log('keyup triggered: ' + value);
-        console.log('flights: ' + this.flights.length);
-
         // clear the details when a fresh search is started.
         this.selectedFlight = null;
         this.searchResults = [];
