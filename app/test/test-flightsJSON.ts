@@ -1,36 +1,5 @@
 import { Flight } from '../entities/flight';
 
-export const MYFLIGHT: Flight =
-    {
-        'id': 'EZ001',
-        'flightNumber': {
-            'carrierCode': 'EZY',
-            'number': 5407
-        },
-        'departureAirport': 'London Luton (LTN)',
-        'departureAirportCode': 'LPT',
-        'arrivalAirport': 'Berlin Schoenefeld (SXF)',
-        'arrivalAirportCode': 'SXF',
-        'depTerminalName': 'South Terminal',
-        'localDepartureTime': new Date('2016-06-30T06:40:00'),
-        'localArrivalTime': new Date('2016-06-30T09:35:00'),
-        'isDisrupted': false,
-        'seatsAvailable': 9,
-        'prices': {
-            'adult': {
-                'value': 27.99,
-                'valueWithDebitCard': 40.99,
-                'valueWithCreditCard': 41.81
-            },
-            'child': {
-                'value': 27.99,
-                'valueWithDebitCard': 40.99,
-                'valueWithCreditCard': 41.81
-            },
-            'infant': null // TODO handle null in JSON
-        }
-    };
-
 export const FLIGHTS: Flight[] = [
     {
         'id': 'EZ001',
