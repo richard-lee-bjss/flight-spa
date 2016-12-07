@@ -4,9 +4,8 @@ import { Location } from '@angular/common';
 
 import { Flight } from './entities/flight';
 import { FlightService } from './flight.service';
-// import { FlightComponent } from './flight.component';
 
-import 'rxjs/add/operator/switchMap'; // use with Observable router paramaters
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     moduleId: module.id,
@@ -24,13 +23,10 @@ export class FlightDetailComponent implements OnInit {
     constructor(
         private flightService: FlightService,
         private router: ActivatedRoute,
-        private location: Location,
-        // private flightComponent: FlightComponent
+        private location: Location
     ) {}
 
     ngOnInit(): void {
-
-        // this.flight = this.flightComponent.getFlight(this.router.params['id']);
 
         this.router.params
             .switchMap((params: Params) => this.flightService.getFlight(params['id']))
