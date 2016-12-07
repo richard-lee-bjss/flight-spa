@@ -109,11 +109,11 @@ describe('FlightsComponent', function () {
 
     }));
 
+    it('should show "Details" button when a flight is selected (fakeAsync)', fakeAsync(() => {
+        // TODO
+    }));
 
-    //   it('should have expected <h1> text', () => {
-    //     fixture.detectChanges();
-    //     const h1 = de.nativeElement;
-    //     expect(h1.innerText).toMatch(/flight info/i,
-    //       '<h1> should say something about "Flight Info"');
-    //   });
+    it('should nav to details page for selected flight when "Details" button clicked (fakeAsync)', fakeAsync(() => {
+        // TODO
+    }));
 });
