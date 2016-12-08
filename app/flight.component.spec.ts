@@ -15,7 +15,7 @@ import { RouterStub } from './test/router-stub';
 import { FLIGHTS } from './test/test-flightsJSON';
 
 ////////  SPECS  /////////////
-describe('FlightComponent', function () {
+describe('FlightDetailsComponent', function () {
     let de: DebugElement;
     let searchEl: DebugElement;
     let listEls: DebugElement[];

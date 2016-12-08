@@ -62,31 +62,6 @@ export class FlightComponent implements OnInit {
                 this.searchResults.push(flight);
                 continue;
             }
-            // search for departure airport
-            if (flight.departureAirport.toUpperCase().indexOf(value) !== -1) {
-                this.searchResults.push(flight);
-                continue;
-            }
-            // search for departure airport code
-            if (flight.departureAirportCode.toUpperCase().indexOf(value) !== -1) {
-                this.searchResults.push(flight);
-                continue;
-            }
-            // search for arrival airport
-            if (flight.arrivalAirport.toUpperCase().indexOf(value) !== -1) {
-                this.searchResults.push(flight);
-                continue;
-            }
-            // search for arrival airport code
-            if (flight.arrivalAirportCode.toUpperCase().indexOf(value) !== -1) {
-                this.searchResults.push(flight);
-                continue;
-            }
-            // search for departure terminal
-            if (flight.depTerminalName.toUpperCase().indexOf(value) !== -1) {
-                this.searchResults.push(flight);
-                continue;
-            }
         }
     }
 }
