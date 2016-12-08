@@ -15,14 +15,13 @@ import { RouterStub } from './test/router-stub';
 import { FLIGHTS } from './test/test-flightsJSON';
 
 ////////  SPECS  /////////////
-describe('FlightDetailsComponent', function () {
+describe('FlightComponent', function () {
     let de: DebugElement;
     let searchEl: DebugElement;
     let listEls: DebugElement[];
     let comp: FlightComponent;
     let fixture: ComponentFixture<FlightComponent>;
     let fakeService: FlightService;
-    let testData = FLIGHTS;
 
     beforeEach(async(() => {
 
@@ -31,8 +30,7 @@ describe('FlightDetailsComponent', function () {
             providers: [
                 { provide: FlightService, useClass: FakeFlightService },
                 { provide: Router, useClass: RouterStub }]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -48,7 +46,7 @@ describe('FlightDetailsComponent', function () {
     it('should load flights on initialisation', () => {
 
         const spy = spyOn(fakeService, 'getFlights')
-            .and.returnValue(Promise.resolve(testData));
+            .and.returnValue(Promise.resolve(FLIGHTS));
 
         // expect fake service to have been called once
         // comp.ngOnInit(); is automatically called on instantiation

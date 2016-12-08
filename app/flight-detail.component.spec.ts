@@ -15,19 +15,28 @@ import { RouterStub } from './test/router-stub';
 import { Location } from '@angular/common';
 import { LocationStub } from './test/location-stub';
 
+import { FLIGHTS } from './test/test-flightsJSON';
+
 ////////  SPECS  /////////////
-describe('FlightComponent', function () {
+describe('FlightDetailComponent', function () {
     let comp: FlightDetailComponent;
     let fixture: ComponentFixture<FlightDetailComponent>;
 
     let fakeFlightService: FlightService;
-    let fakeActivatedRoute: ActivatedRoute;
-    let fakeLocation: Location;
+    let fakeActivatedRoute: RouterStub;
+    let fakeLocation: LocationStub;
 
     // let testData = FLIGHTS;
     // let de: DebugElement;
     // let searchEl: DebugElement;
     // let listEls: DebugElement[];
+
+    beforeEach(() => {
+        fakeActivatedRoute = new RouterStub();
+        fakeLocation = new LocationStub();
+
+        fakeActivatedRoute.testParams = { id: 'EZ001Test' };
+    });
 
     beforeEach(async(() => {
 
@@ -35,12 +44,9 @@ describe('FlightComponent', function () {
             declarations: [FlightDetailComponent],
             providers: [
                 { provide: FlightService, useClass: FakeFlightService },
-                { provide: ActivatedRoute, useClass: RouterStub },
-                { provide: Location, useClass: LocationStub }]
+                { provide: ActivatedRoute, useValue: fakeActivatedRoute },
+                { provide: Location, useValue: fakeLocation }]
         }).compileComponents();
-
-        fakeActivatedRoute.testParams = { id: 'EZ001Test' };
-
     }));
 
     beforeEach(() => {
@@ -48,38 +54,40 @@ describe('FlightComponent', function () {
         comp = fixture.componentInstance;
 
         fakeFlightService = TestBed.get(FlightService);
-        // searchEl = fixture.debugElement.query(By.css('#search-box'));
     });
 
     it('should create component', () => expect(comp).toBeDefined());
 
-    fit('should set flight details on initialisation', () => {
+    it('should set flight details on initialisation', () => {
 
         /* should 
         1. get the flight id from the router params
         2. call flight service to get (test) data, and
         3. set the flight member.
         For this test I'm leaving the flight member public so checking
-        it is simple. The point ofd this test is to show how a router 
+        it is simple. The point of this test is to show how a router 
         can be stubbed out so the routing on a component can be tested.
         (The FlightComponent unit test shows an example of
         checking the rendered page for state values when the members are 
         private).
         */
-        const spyOnService = spyOn(fakeFlightService, 'getFlight');
+        const serviceSpy = spyOn(fakeFlightService, 'getFlight')
+            .and.returnValue(Promise.resolve(FLIGHTS[0]));
 
         // expect fake service to have been called once
         // comp.ngOnInit(); is automatically called on instantiation
         fixture.detectChanges();
-        tick();
-        expect(spyOnService.calls.count()).toBe(1, 'getFlight called');
+        expect(serviceSpy.calls.count()).toBe(1, 'getFlight called');
     });
 
     it('should go back to previous page when requested', fakeAsync(() => {
 
         /* again I'm just testing the method on the class, rather than setting up the UI first
         */
-        const spyOnLocation = spyOn(fakeLocation, 'getFlight');
+        const locationSpy = spyOn(fakeLocation, 'back');
+        comp.goBack();
+        expect(locationSpy.calls.count()).toBe(1, 'back called');
+
     }));
 
 });

@@ -1,3 +1,3 @@
 export class LocationStub {
-    goBack(): void {}
+    back(): void {}
 }
