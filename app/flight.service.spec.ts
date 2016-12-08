@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, inject, TestBed, getTestBed } from '@angular/core/testing';
+import { async, fakeAsync, inject, TestBed, getTestBed } from '@angular/core/testing';
 import { Headers, BaseRequestOptions, Response, HttpModule, Http, XHRBackend, RequestMethod } from '@angular/http';
 import { ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -12,9 +12,10 @@ import { FLIGHTS } from './test/test-flightsJSON';
 //////////// TESTS ////////////
 describe('FlightService', function () {
 
+    let svc: FlightService;
     let mockBackend: MockBackend;
 
-    beforeEach(async(() => {
+    beforeEach(() => {
 
         TestBed.configureTestingModule({
             providers: [
@@ -30,55 +31,40 @@ describe('FlightService', function () {
                     }
                 }
             ],
-            imports: [ HttpModule ]
+            imports: [HttpModule]
         });
-        mockBackend = getTestBed().get(MockBackend);
-    }));
-
-    it('should create component', async(() => {
-        let svc: FlightService;
 
         svc = getTestBed().get(FlightService);
-        expect(svc).toBeDefined();
+        mockBackend = getTestBed().get(MockBackend);
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+            // set default response data
+            let options = new ResponseOptions({ body: FLIGHTS });
+            connection.mockRespond(new Response(options));
+        });
+
+    });
+
+    it('should create component', () => expect(svc).toBeDefined());
+
+    it('should use correct url (async)', async(() => {
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+            // check backend was called as expected
+            expect(connection.request.method).toEqual(RequestMethod.Get);
+            expect(connection.request.url).toEqual('http://ejtestbed.herokuapp.com/flights');
+        });
+
+        svc.getFlights();
+
     }));
 
-    it('should use correct url', () => {
-        let svc: FlightService;
+    it('should return flights', async(() => {
 
-        getTestBed().compileComponents().then(() => {
-
-            mockBackend.connections.subscribe((connection: MockConnection) => {
-                // set response data
-                let options = new ResponseOptions({body: FLIGHTS});
-                connection.mockRespond(new Response(options));
-
-                // check backend was called as expected
-                expect(connection.request.method).toEqual(RequestMethod.Get);
-                expect(connection.request.url).toEqual('http://ejtestbed.herokudeadlyapp.com/flights');
-            });
+        svc.getFlights().then(f => {
+            expect(f.length).toBeDefined();
+            expect(f.length).toEqual(8);
+            expect(f[0].id).toEqual('EZ001Test');
         });
-    });
-
-    it('should return a promise on flights', () => {
-        let svc: FlightService;
-
-        getTestBed().compileComponents().then(() => {
-            mockBackend.connections.subscribe(
-                (connection: MockConnection) => {
-                    connection.mockRespond(new Response(
-                        new ResponseOptions({
-                            body: FLIGHTS
-                        }
-                        )));
-                });
-
-            let flights: Flight;
-            svc.getFlights().then(f => {
-                expect(f.length).toBeDefined();
-                expect(f.length).toEqual(8);
-                expect(f[0].id).toEqual('EZ001Test');
-                // TODO why am I getting en embedded array? Data problem in test
-            });
-        });
-    });
+    }));
 });

@@ -9,7 +9,6 @@ import { Flight } from './models/flight';
 export class FlightService {
 
     private flightsUrl = 'http://ejtestbed.herokuapp.com/flights'; // URL to web api
-    // private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
 
@@ -28,7 +27,6 @@ export class FlightService {
         return this.http
             .get(this.flightsUrl)
             .toPromise()
-            // .then(response => { console.log(response.json()); return response; })
             .then(response => response.json() as Flight[])
             .catch(this.handleError);
     }
