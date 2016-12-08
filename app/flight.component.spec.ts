@@ -87,8 +87,8 @@ describe('FlightComponent', function () {
         listEls = fixture.debugElement.queryAll(By.css('.badge'));
         expect(listEls.length).toEqual(8,
             'should display flight numbers for a valid search term (fakeAsync)');
-        expect(listEls[0].nativeElement.innerText).toEqual('EZ001',
-            'element [0] should be "EZ001"');
+        expect(listEls[0].nativeElement.innerText).toEqual('EZ001Test',
+            'element [0] should be "EZ001Test"');
         expect(listEls[7].nativeElement.innerText).toEqual('EZ008',
             'element [7] should be "EZ008"');
     }));

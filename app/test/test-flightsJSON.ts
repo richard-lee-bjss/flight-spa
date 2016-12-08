@@ -2,7 +2,7 @@ import { Flight } from '../entities/flight';
 
 export const FLIGHTS: Flight[] = [
     {
-        'id': 'EZ001',
+        'id': 'EZ001Test',
         'flightNumber': {
             'carrierCode': 'EZY',
             'number': 5407

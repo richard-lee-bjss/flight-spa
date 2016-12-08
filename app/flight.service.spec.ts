@@ -44,7 +44,14 @@ describe('FlightService', function () {
         // });
     });
 
-    fit('should create component', async(() => {
+    it('should create component', async(() => {
+        let svc: FlightService;
+
+        svc = getTestBed().get(FlightService);
+        expect(svc).toBeDefined();
+    }));
+
+    it('should use correct url and return a promise on flights', () => {
         let svc: FlightService;
 
         getTestBed().compileComponents().then(() => {
@@ -52,7 +59,7 @@ describe('FlightService', function () {
                 (connection: MockConnection) => {
                     connection.mockRespond(new Response(
                         new ResponseOptions({
-                            body: [FLIGHTS]
+                            body: FLIGHTS
                         }
                         )));
                 });
@@ -63,19 +70,11 @@ describe('FlightService', function () {
             let flights: Flight;
             svc.getFlights().then(f => {
                 expect(f.length).toBeDefined();
-                expect(f.length).toEqual(1);
-                expect(flights[0].length).toEqual(8);
-                expect(f[0][0].id).toEqual('EZY001');
+                expect(f.length).toEqual(8);
+                expect(f[0].id).toEqual('EZ001Test');
                 // TODO why am I getting en embedded array? Data problem in test
             });
         });
 
-        it('should use correct url and return a promise on flights', () => {
-
-            // let flights: Flight[] = [];
-            // svc.getFlights().then(f => flights = f);
-            // expect(flights.length).toEqual(testData.length, 'nope');
-        });
-
-    }));
+    });
 });
