@@ -1,66 +1,29 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# Flights Info 
+Angular QuickStart Source
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
-
-It's been extended with testing support so you can start writing tests immediately.
-
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
-
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+This repository holds the TypeScript source code of Rich Lee's EasyJet coding test.
+It's based on the Quickstart as recommended on [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html).
 
 ## Prerequisites
 
-Node.js and npm are essential to Angular development. 
+Node.js and npm 
     
 <a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
-Get it now</a> if it's not already installed on your machine.
+Install</a> if it's not already installed on your machine.
  
-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
+Verify that you are running at least node `v4.x.x` and npm `3.x.x`
 by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
 
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
+## Git repo
+This is on my BJSS repo at <a href="http://github.com/richard-lee-bjss/flight-spa" target="_blank" title="Flight-Spa">
+GitHub</a>
 
-## Create a new project based on the QuickStart
-
-Clone this repo into new project folder (e.g., `my-proj`).
+Clone it with 
 ```bash
-git clone  https://github.com/angular/quickstart  my-proj
-cd my-proj
+git clone https://github.com/richard-lee-bjss/flight-spa.git
 ```
 
-We have no intention of updating the source on `angular/quickstart`.
-Discard everything "git-like" by deleting the `.git` folder.
-```bash
-rm -rf .git  # non-Windows
-rd .git /S/Q # windows
-```
-
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```bash
-git remote add origin <repo-address>
-git push -u origin master
-```
-## Install npm packages
-
-> See npm and nvm version notes above
+## Install npm packages and run/test the app
 
 Install the npm packages described in the `package.json` and verify that it works:
 
@@ -69,77 +32,77 @@ npm install
 npm start
 ```
 
-The `npm start` command first compiles the application, 
-then simultaneously re-compiles and runs the `lite-server`.
-Both the compiler and the server watch for file changes.
-
+* `npm start` command first compiles the application, then simultaneously re-compiles and runs the `lite-server`. Both the compiler and the server watch for file changes.
 Shut it down manually with `Ctrl-C`.
-
-You're ready to write your application.
-
-### npm scripts
-
-We've captured many of the most useful commands in npm scripts defined in the `package.json`:
-
-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run tsc` - runs the TypeScript compiler once.
-* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
-* `npm run lite` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
-[John Papa](https://github.com/johnpapa) and
-[Christopher Martin](https://github.com/cgmartin)
-with excellent support for Angular apps that use routing.
-
-Here are the test related scripts:
-* `npm test` - compiles, runs and watches the karma unit tests
+* `npm test` - compiles, runs and watches the karma unit tests. Test-runner output appears in the terminal window.
 * `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
 
 ## Testing
 
-The QuickStart documentation doesn't discuss testing.
-This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
-
-These tools are configured for specific conventions described below.
-
-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
-We recommend that you shut down one before starting another.*
-
-### Unit Tests
-TypeScript unit-tests are usually in the `app` folder. Their filenames must end in `.spec`.
-
-Look for the example `app/app.component.spec.ts`.
-Add more `.spec.ts` files as you wish; we configured karma to find them.
-
-Run it with `npm test`
-
-That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.
-Both the compiler and the karma watch for (different) file changes.
-
-Shut it down manually with `Ctrl-C`.
-
-Test-runner output appears in the terminal window.
-We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.
-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and
-restart it. No worries; it's pretty quick.
+This repo includes karma/jasmine unit tests and protractor end-to-end testing support.
 
 ### End-to-end (E2E) Tests
 
-E2E tests are in the `e2e` directory, side by side with the `app` folder.
-Their filenames must end in `.e2e-spec.ts`.
-
-Look for the example `e2e/app.e2e-spec.ts`.
-Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);
-we configured protractor to find them.
-
-Thereafter, run them with `npm run e2e`.
+I've done nothing with e2e tests other than update the example so it pases.
+Run them with `npm run e2e`.
 
 That command first compiles, then simultaneously starts the Http-Server at `localhost:8080`
 and launches protractor.  
 
-The pass/fail test results appear at the bottom of the terminal window.
-A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file
-which is easier to read; this file is excluded from source control.
+# A brief discussion of what I've done here
 
-Shut it down manually with `Ctrl-C`.
+## App requirements
 
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
+**Code test for Developer Role**
+
+flights api: http://ejtestbed.herokuapp.com/flights
+
+Develop a simple spa application that consumes the above flights api using the technologies i.e.  Html, Css (.less  .sass etc.) and a Javascript framework of your choice.
+
+The app should do the following :
+* display flights in a search results page 
+* Allow a user to click on the link to display a details page on selected flight
+* client side filtering
+
+## Implementation
+Firstly Angular2 is new to me, so it's been a case of learning enough to implement the app and 
+some representative unit testing.
+
+* FlightComponent - the main page, with a searhc box. Entering terms (flight id) into the box generates
+a filtered list of ids below. Select one to show a 'Details' button. Click to nav to details.
+* FlightDetailsComponent - the details page. A back button returns to the main page. Routing from 
+main<->details uses Angular routing.
+* FlightService - encapsulates the api call
+
+Client side filtering is done for the FlightComponent using a member variable populated on init by 
+a single back end service call to the api. the api data seems to only really differ in terms of the 
+flight number, so for a basic implementation I'filtering only on the id. Additional filtering can 
+easily be added with furhter checks in the FlightComponent search() method.
+
+Nav to the details page is accompanied by a further call to the api to get the selected flight. 
+Ideally I wouldn't do this - I'd persist the flights to a local FlightStore component and use that 
+instead of making another call.
+
+## Testing
+Due to time constraints I've tried to create test to demonstrate the key unit testing features
+which might be used in an app, rather than to attempt full coverage.
+
+* FlightComponent
+    * uses a fake service to return dummy test data
+    * sets values into the search box UI element, trigger an event, and verifies that the results list is displayed by 
+    querying the relevant CSS style tag on the page; demonstrating UT by manipulating the template/view.
+    * I've implemented the FlightComponent code with appropriate private state and functions, 
+    so that UI-based testing is appropriate. I'm assuming that maximum encapsulation is required in 
+    production code, so this etst style will be common. 
+
+* FlightDetailsComponent
+    * THis component is routed from the main FlightComponent view, and calls the service to get the requried flight.
+    * So I've faked/stubbed the dependencies. 
+        * For the service dependency the fake returns dummy data.
+        * For the router dependency I've set the stub to return the id of one of the dummy flights.
+        * The Location dependency is dumb, but I use a Spy to check it was called when the goBack() function is called.
+
+* FlightService
+    * uses Angular2's MockBackend to fake out the service's Http call. It would be simpler to use a 
+    basic Http stub, but MockBackend seems to be a preferred approach.
+    * tests that the correct URL is used, and that flights are corectly returned via a promise.

@@ -30,19 +30,10 @@ describe('FlightService', function () {
                     }
                 }
             ],
-            imports: [
-                HttpModule
-            ]
+            imports: [ HttpModule ]
         });
         mockBackend = getTestBed().get(MockBackend);
     }));
-
-    beforeEach(() => {
-
-        // inject([FlightService], (flightService: FlightService) => {
-        //     svc = flightService;
-        // });
-    });
 
     it('should create component', async(() => {
         let svc: FlightService;
@@ -51,7 +42,24 @@ describe('FlightService', function () {
         expect(svc).toBeDefined();
     }));
 
-    it('should use correct url and return a promise on flights', () => {
+    it('should use correct url', () => {
+        let svc: FlightService;
+
+        getTestBed().compileComponents().then(() => {
+
+            mockBackend.connections.subscribe((connection: MockConnection) => {
+                // set response data
+                let options = new ResponseOptions({body: FLIGHTS});
+                connection.mockRespond(new Response(options));
+
+                // check backend was called as expected
+                expect(connection.request.method).toEqual(RequestMethod.Get);
+                expect(connection.request.url).toEqual('http://ejtestbed.herokudeadlyapp.com/flights');
+            });
+        });
+    });
+
+    it('should return a promise on flights', () => {
         let svc: FlightService;
 
         getTestBed().compileComponents().then(() => {
@@ -64,9 +72,6 @@ describe('FlightService', function () {
                         )));
                 });
 
-            svc = getTestBed().get(FlightService);
-            expect(svc).toBeDefined();
-
             let flights: Flight;
             svc.getFlights().then(f => {
                 expect(f.length).toBeDefined();
@@ -75,6 +80,5 @@ describe('FlightService', function () {
                 // TODO why am I getting en embedded array? Data problem in test
             });
         });
-
     });
 });

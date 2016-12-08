@@ -56,7 +56,7 @@ describe('FlightComponent', function () {
 
     it('should not display flight numbers for an empty search term (fakeAsync)', fakeAsync(() => {
 
-        // this test case corresponds to deleting serch terms from the search box
+        // this test case corresponds to deleting/backspace serch terms from the search box
 
         // let service promises be resolved for data via ngOnInit
         fixture.detectChanges();
