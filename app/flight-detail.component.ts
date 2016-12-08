@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Flight } from './entities/flight';
+import { Flight } from './models/flight';
 import { FlightService } from './flight.service';
 
 import 'rxjs/add/operator/switchMap';

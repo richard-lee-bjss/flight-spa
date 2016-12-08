@@ -1,4 +1,4 @@
-import { Flight } from '../entities/flight';
+import { Flight } from '../models/flight';
 
 export const FLIGHTS: Flight[] = [
     {

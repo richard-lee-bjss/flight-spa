@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Flight } from './entities/flight';
+import { Flight } from './models/flight';
 import { FlightService } from './flight.service';
 
 @Component({

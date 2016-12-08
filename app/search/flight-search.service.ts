@@ -3,7 +3,7 @@ import { Http, Response }   from '@angular/http';
 
 import { Observable }   from 'rxjs';
 
-import { Flight }   from '../entities/flight';
+import { Flight }   from '../models/flight';
 
 @Injectable()
 export class FlightSearchService {

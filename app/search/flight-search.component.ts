@@ -15,7 +15,7 @@ import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
 import { FlightSearchService } from './flight-search.service';
-import { Flight } from '../entities/flight';
+import { Flight } from '../models/flight';
 
 @Component({
   moduleId: module.id,

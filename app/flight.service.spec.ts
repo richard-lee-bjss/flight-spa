@@ -6,7 +6,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { FlightService } from './flight.service';
 
-import { Flight } from './entities/flight';
+import { Flight } from './models/flight';
 import { FLIGHTS } from './test/test-flightsJSON';
 
 //////////// TESTS ////////////

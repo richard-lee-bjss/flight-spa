@@ -1,8 +1,8 @@
 // re-export for tester convenience
-export { Flight } from '../entities/flight';
+export { Flight } from '../models/flight';
 export { FlightService } from '../flight.service';
 
-import { Flight } from '../entities/flight';
+import { Flight } from '../models/flight';
 
 import { FLIGHTS } from './test-flightsJSON';
 
