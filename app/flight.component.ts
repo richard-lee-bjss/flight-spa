@@ -8,7 +8,7 @@ import { FlightService } from './flight.service';
     moduleId: module.id,
     selector: 'my-flights',
     templateUrl: 'flight.component.html',
-    styleUrls: ['flight.component.css']
+    // styleUrls: ['flight.component.css']
 })
 
 export class FlightComponent implements OnInit {

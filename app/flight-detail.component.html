@@ -1,22 +1,85 @@
-<div *ngIf="flight">
-    <h2>{{flight.id}} Details</h2>
-    <div><label>Flight Number: </label><span>{{flight.flightNumber.carrierCode}} {{flight.flightNumber.number}}</span><br/>
-        <label>Departure Airport: </label><span>{{flight.departureAirport}}</span><br/>
-        <label>Arrival Airport: </label><span>{{flight.arrivalAirport}}</span><br/>
-        <label>Departure Terminal: </label><span>{{flight.depTerminalName}}</span><br/>
-        <label>Departure Time: </label><span>{{flight.localDepartureTime | date: 'medium' }}</span><br/>
-        <label>Arrival Time: </label><span>{{flight.localArrivalTime | date: 'medium'}}</span><br/>
-        <label>Disrupted: </label><span>{{flight.isDisrupted}} </span><br/>
-        <label>Number of Seats Available: </label><span>{{flight.seatsAvailable}}</span><br/>
-        <label>Adult Price: </label><span>{{flight.prices.adult?.value | currency: 'GPB':true:'1.2-2'}}</span><br/>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{flight.prices.adult?.valueWithDebitCard}}</span><br/>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{flight.prices.adult?.valueWithCreditCard}}</span><br/>
-        <label>Child Prices: </label><span>{{flight.prices.child?.value}}</span><br/>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{flight.prices.child?.valueWithDebitCard}}</span><br/>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{flight.prices.child?.valueWithDebitCard}}</span><br/>
-        <label>Infant Prices: </label><span>{{flight.prices.infant?.value}}</span><br/>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Debit Card: </label><span>{{flight.prices.infant?.valueWithDebitCard}}</span><br/>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><label>with Credit Card: </label><span>{{flight.prices.infant?.valueWithCreditCard}}</span>
+<div class="container" *ngIf="flight">
+    <h2>{{flight.id}} Details</h2><button  type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Flight Number</td>
+                    <td>{{flight.flightNumber.carrierCode}} {{flight.flightNumber.number}}</td>
+                </tr>
+                <tr>
+                    <td>Departure Airport: </td>
+                    <td>{{flight.departureAirport}}</td>
+                </tr>
+                <tr>
+                    <td>Arrival Airport: </td>
+                    <td>{{flight.arrivalAirport}}</td>
+                </tr>
+                <tr>
+                    <td>Departure Terminal: </td>
+                    <td>{{flight.depTerminalName}}</td>
+                </tr>
+                <tr>
+                    <td>Departure Time: </td>
+                    <td>{{flight.localDepartureTime | date: 'medium' }}</td>
+                </tr>
+                <tr>
+                    <td>Arrival Time: </td>
+                    <td>{{flight.localArrivalTime | date: 'medium'}}</td>
+                </tr>
+                <tr>
+                    <td>Disrupted: </td>
+                    <td>{{flight.isDisrupted}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Seats Available: </td>
+                    <td>{{flight.seatsAvailable}}</td>
+                </tr>
+                <tr>
+                    <td>Adult Price: </td>
+                    <td>{{flight.prices.adult?.value | currency: 'GPB':true:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>with Debit Card: </td>
+                    <td>{{flight.prices.adult?.valueWithDebitCard}}</td>
+                </tr>
+                <tr>
+                    <td>with Credit Card: </td>
+                    <td>{{flight.prices.adult?.valueWithCreditCard}}</td>
+                </tr>
+                <tr>
+                    <td>Child Prices: </td>
+                    <td>{{flight.prices.child?.value}}</td>
+                </tr>
+                <tr>
+                    <td>with Debit Card: </td>
+                    <td>{{flight.prices.child?.valueWithDebitCard}}</td>
+                </tr>
+                <tr>
+                    <td>with Credit Card: </td>
+                    <td>{{flight.prices.child?.valueWithCreditCard}</td>
+                </tr>
+                <tr>
+                    <td>Infant Prices: </td>
+                    <td>{{flight.prices.infant?.value}}</td>
+                </tr>
+                <tr>
+                    <td>with Debit Card: </td>
+                    <td>{{flight.prices.infant?.valueWithDebitCard}}</td>
+                </tr>
+                <tr>
+                    <td>with Credit Card: </td>
+                    <td>{{flight.prices.infant?.valueWithCreditCard}}</td>
+                </tr>
+                <tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<button (click)="goBack()">Back</button><br/>
