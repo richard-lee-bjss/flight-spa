@@ -54,7 +54,7 @@ describe('FlightComponent', function () {
         expect(spy.calls.count()).toBe(1, 'getFlights called');
     });
 
-    it('should not display flight numbers for an empty search term (fakeAsync)', fakeAsync(() => {
+    it('should display all flight numbers for an empty search term (fakeAsync)', fakeAsync(() => {
 
         // this test case corresponds to deleting/backspace serch terms from the search box
 
@@ -67,14 +67,13 @@ describe('FlightComponent', function () {
         tick();
 
         listEls = fixture.debugElement.queryAll(By.css('.badge'));
-        expect(listEls.length).toEqual(0,
-            'should not display flight numbers for an empty search term (fakeAsync)');
+        expect(listEls.length).toEqual(8,
+            'should  display all flight numbers for an empty search term (fakeAsync)');
 
     }));
 
-    it('should display flight numbers for a valid search term (fakeAsync)', fakeAsync(() => {
+    it('should display flight numbers for id search (fakeAsync)', fakeAsync(() => {
 
-        // let service promises be resolved for data via ngOnInit
         fixture.detectChanges();
         tick();
         searchEl.nativeElement.value = 'e';
@@ -84,16 +83,63 @@ describe('FlightComponent', function () {
 
         listEls = fixture.debugElement.queryAll(By.css('.badge'));
         expect(listEls.length).toEqual(8,
-            'should display flight numbers for a valid search term (fakeAsync)');
+            'should display flight numbers for id search (fakeAsync)');
         expect(listEls[0].nativeElement.innerText).toEqual('EZ001Test',
             'element [0] should be "EZ001Test"');
         expect(listEls[7].nativeElement.innerText).toEqual('EZ008',
             'element [7] should be "EZ008"');
     }));
 
+    it('should display flight numbers for flight number search (fakeAsync)', fakeAsync(() => {
+
+        fixture.detectChanges();
+        tick();
+        searchEl.nativeElement.value = '5409';
+        searchEl.triggerEventHandler('keyup', null);
+        fixture.detectChanges();
+        tick();
+
+        listEls = fixture.debugElement.queryAll(By.css('.badge'));
+        expect(listEls.length).toEqual(2,
+            'should display flight numbers for flight number search (fakeAsync)');
+        expect(listEls[0].nativeElement.innerText).toEqual('EZ002',
+            'element [0] should be "EZ002"');
+    }));
+
+    it('should display flight numbers for departure airport search (fakeAsync)', fakeAsync(() => {
+
+        fixture.detectChanges();
+        tick();
+        searchEl.nativeElement.value = 'Bristol';
+        searchEl.triggerEventHandler('keyup', null);
+        fixture.detectChanges();
+        tick();
+
+        listEls = fixture.debugElement.queryAll(By.css('.badge'));
+        expect(listEls.length).toEqual(1,
+            'should display flight numbers for departure airport search (fakeAsync)');
+        expect(listEls[0].nativeElement.innerText).toEqual('EZ001Test',
+            'element [0] should be "EZ001Test"');
+    }));
+
+    it('should display flight numbers for arrival airport search (fakeAsync)', fakeAsync(() => {
+
+        fixture.detectChanges();
+        tick();
+        searchEl.nativeElement.value = 'Birmingham';
+        searchEl.triggerEventHandler('keyup', null);
+        fixture.detectChanges();
+        tick();
+
+        listEls = fixture.debugElement.queryAll(By.css('.badge'));
+        expect(listEls.length).toEqual(1,
+            'should display flight numbers for arrival airport search (fakeAsync)');
+        expect(listEls[0].nativeElement.innerText).toEqual('EZ001Test',
+            'element [0] should be "EZ001Test"');
+    }));
+
     it('should not display flight numbers for an invalid search term (fakeAsync)', fakeAsync(() => {
 
-        // let service promises be resolved for data via ngOnInit
         fixture.detectChanges();
         tick();
         searchEl.nativeElement.value = 'qqq';

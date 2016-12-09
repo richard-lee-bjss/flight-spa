@@ -33,7 +33,8 @@ export class FlightComponent implements OnInit {
     private getFlights(): void {
 
         this.flightService.getFlights()
-            .then(flights => this.flights = flights);
+            .then(flights => this.flights = flights)
+            .then(flights => this.searchResults = flights); // make the list of all flights visible on startup
     }
 
     onSelect(flight: Flight) {
@@ -50,10 +51,6 @@ export class FlightComponent implements OnInit {
         this.selectedFlight = null;
         this.searchResults = [];
 
-        if (value.length <= 0) {
-            return;
-        }
-
         value = value.toUpperCase();
 
         for (let flight of this.flights) {
@@ -62,6 +59,25 @@ export class FlightComponent implements OnInit {
                 this.searchResults.push(flight);
                 continue;
             }
+            // search for flight number
+            if (flight.flightNumber.number === +value) {
+                this.searchResults.push(flight);
+                continue;
+            }
+            // search for departure airport
+            if (flight.departureAirport.toUpperCase().indexOf(value) !== -1) {
+                this.searchResults.push(flight);
+                continue;
+            }
+            // search for arrival airport
+            if (flight.arrivalAirport.toUpperCase().indexOf(value) !== -1) {
+                this.searchResults.push(flight);
+                continue;
+            }
+        }
+        //  default is to show all flights
+        if (value.length <= 0 && this.searchResults.length === 0)  {
+            this.searchResults = this.flights.slice();
         }
     }
 }
