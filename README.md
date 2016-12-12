@@ -1,6 +1,4 @@
 # Flights Info 
-Angular QuickStart Source
-
 This repository holds the TypeScript source code of Rich Lee's EasyJet coding test.
 It's based on the Quickstart as recommended on [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html).
 
@@ -13,15 +11,6 @@ Install</a> if it's not already installed on your machine.
  
 Verify that you are running at least node `v4.x.x` and npm `3.x.x`
 by running `node -v` and `npm -v` in a terminal/console window.
-
-## Git repo
-This is on my BJSS repo at <a href="http://github.com/richard-lee-bjss/flight-spa" target="_blank" title="Flight-Spa">
-GitHub</a>
-
-Clone it with 
-```bash
-git clone https://github.com/richard-lee-bjss/flight-spa.git
-```
 
 ## Install npm packages and run/test the app
 
@@ -96,7 +85,7 @@ which might be used in an app, rather than to attempt full coverage.
     production code, so this etst style will be common. 
 
 * FlightDetailsComponent
-    * THis component is routed from the main FlightComponent view, and calls the service to get the requried flight.
+    * This component is routed from the main FlightComponent view, and calls the service to get the requried flight.
     * So I've faked/stubbed the dependencies. 
         * For the service dependency the fake returns dummy data.
         * For the router dependency I've set the stub to return the id of one of the dummy flights.
