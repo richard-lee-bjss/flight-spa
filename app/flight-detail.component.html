@@ -4,39 +4,39 @@
     <dl class="dl-horizontal">
         <dt>Flight Number</dt>
         <dd>{{flight.flightNumber.carrierCode}} {{flight.flightNumber.number}}</dd>
-        <dt>Departure Airport: </dt>
+        <dt>Departure Airport</dt>
         <dd>{{flight.departureAirport}}</dd>
-        <dt>Arrival Airport: </dt>
+        <dt>Arrival Airport</dt>
         <dd>{{flight.arrivalAirport}}</dd>
-        <dt>Departure Terminal: </dt>
+        <dt>Departure Terminal</dt>
         <dd>{{flight.depTerminalName}}</dd>
-        <dt>Departure Time: </dt>
+        <dt>Departure Time</dt>
         <dd>{{flight.localDepartureTime | date: 'short' }}</dd>
-        <dt>Arrival Time: </dt>
+        <dt>Arrival Time</dt>
         <dd>{{flight.localArrivalTime | date: 'short'}}</dd>
-        <dt>Disrupted: </dt>
+        <dt>Disrupted</dt>
         <dd>{{flight.isDisrupted}}</dd>
-        <dt>Seats Available: </dt>
+        <dt>Seats Available</dt>
         <dd>{{flight.seatsAvailable}}</dd>
-        <dt>Adult Price: </dt>
+        <dt>Adult Price</dt>
         <dd>{{flight.prices.adult?.value | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>with Debit Card: </dt>
+        <dt>with Debit Card</dt>
         <dd>{{flight.prices.adult?.valueWithDebitCard | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>with Credit Card: </dt>
+        <dt>with Credit Card</dt>
         <dd>{{flight.prices.adult?.valueWithCreditCard | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>Child Price: </dt>
+        <dt>Child Price</dt>
         <dd>{{flight.prices.child?.value | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>with Debit Card: </dt>
+        <dt>with Debit Card</dt>
         <dd>{{flight.prices.child?.valueWithDebitCard | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>with Credit Card: </dt>
+        <dt>with Credit Card</dt>
         <dd>{{flight.prices.child?.valueWithCreditCard | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>Infant Price: </dt>
+        <dt>Infant Price</dt>
         <dd *ngIf="flight.prices.infant !== null">{{flight.prices.infant?.value | currency: 'GBP':true:'1.2-2'}}</dd>
         <dd *ngIf="flight.prices.infant === null">{{0.00 | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>with Debit Card: </dt>
+        <dt>with Debit Card</dt>
         <dd *ngIf="flight.prices.infant !== null">{{flight.prices.infant?.valueWithDebitCard | currency: 'GBP':true:'1.2-2'}}</dd>
         <dd *ngIf="flight.prices.infant === null">{{0.00 | currency: 'GBP':true:'1.2-2'}}</dd>
-        <dt>with Credit Card: </dt>
+        <dt>with Credit Card</dt>
         <dd *ngIf="flight.prices.infant !== null">{{flight.prices.infant?.valueWithCreditCard | currency: 'GBP':true:'1.2-2'}}</dd>
         <dd *ngIf="flight.prices.infant === null">{{0.00 | currency: 'GBP':true:'1.2-2'}}</dd>
     </dl>
