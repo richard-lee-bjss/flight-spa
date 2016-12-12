@@ -10,7 +10,7 @@ import { FlightDetailComponent } from './flight-detail.component';
 import { FlightService } from './flight.service';
 import { FakeFlightService } from './test/fake-flight.service';
 import { ActivatedRoute, Params } from '@angular/router';
-// import { Router } from '@angular/router';
+
 import { RouterStub } from './test/router-stub';
 import { Location } from '@angular/common';
 import { LocationStub } from './test/location-stub';
@@ -25,11 +25,6 @@ describe('FlightDetailComponent', function () {
     let fakeFlightService: FlightService;
     let fakeActivatedRoute: RouterStub;
     let fakeLocation: LocationStub;
-
-    // let testData = FLIGHTS;
-    // let de: DebugElement;
-    // let searchEl: DebugElement;
-    // let listEls: DebugElement[];
 
     beforeEach(() => {
         fakeActivatedRoute = new RouterStub();
@@ -58,7 +53,7 @@ describe('FlightDetailComponent', function () {
 
     it('should create component', () => expect(comp).toBeDefined());
 
-    it('should set flight details on initialisation', () => {
+    it('should call the flight service on initialisation', () => {
 
         /* should 
         1. get the flight id from the router params
@@ -78,6 +73,12 @@ describe('FlightDetailComponent', function () {
         // comp.ngOnInit(); is automatically called on instantiation
         fixture.detectChanges();
         expect(serviceSpy.calls.count()).toBe(1, 'getFlight called');
+    });
+
+    xit('should set flight details on initialisation', () => {
+
+        // TODO check data on the page
+        fail();
     });
 
     it('should go back to previous page when requested', fakeAsync(() => {

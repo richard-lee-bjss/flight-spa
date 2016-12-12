@@ -67,4 +67,10 @@ describe('FlightService', function () {
             expect(f[0].id).toEqual('EZ001Test');
         });
     }));
+
+    xit('should return a single flight', async(() => {
+
+        // TODO call getFlight() and check correct flight returned
+        fail();
+    }));
 });

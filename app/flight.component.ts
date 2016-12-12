@@ -7,11 +7,13 @@ import { FlightService } from './flight.service';
 @Component({
     moduleId: module.id,
     selector: 'my-flights',
-    templateUrl: 'flight.component.html',
-    // styleUrls: ['flight.component.css']
+    templateUrl: 'flight.component.html'
 })
 
 export class FlightComponent implements OnInit {
+
+    // TODO refactor to separate SearchComponent: FlightComponent should 
+    // list flights based on a supplied filter
 
     private flights: Flight[] = [];
     private searchResults: Flight[] = [];
