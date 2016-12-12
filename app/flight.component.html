@@ -1,11 +1,15 @@
-<label>Search: </label>
-<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+<form>
+    <label for="search-box">Search: </label>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+</form>
 
-<ul class="list-group">
-    <li *ngFor="let flight of this.searchResults" [class.active]="flight === selectedFlight" (click)="onSelect(flight)">
-        <span class="list-group-item">{{flight.id}}: {{flight.departureAirportCode}} to {{flight.arrivalAirportCode}}</span>
-    </li>
-</ul>
-<div *ngIf="selectedFlight">
-    <button type="button" class="btn btn-primary" (click)="gotoDetail(selectedFlight.id)"><span class="badge">{{selectedFlight.id}}</span>  View Details</button>
+<div id="results">
+    <ul class="list-group">
+        <li *ngFor="let flight of this.searchResults" [class.active]="flight === selectedFlight" (click)="onSelect(flight)">
+            <span class="list-group-item"><strong>{{flight.id}}:</strong> {{flight.departureAirportCode}} to {{flight.arrivalAirportCode}} on  {{flight.localDepartureTime | date: 'medium'}}</span>
+        </li>
+    </ul>
+    <div *ngIf="selectedFlight">
+        <button type="button" class="btn btn-primary" (click)="gotoDetail(selectedFlight.id)"><span class="badge">{{selectedFlight.id}}</span>  View Details</button>
+    </div>
 </div>
