@@ -45,8 +45,7 @@ describe('FlightComponent', function () {
 
     it('should load flights on initialisation', () => {
 
-        const spy = spyOn(fakeService, 'getFlights')
-            .and.returnValue(Promise.resolve(FLIGHTS));
+        const spy = spyOn(fakeService, 'getFlights').and.callThrough();
 
         // expect fake service to have been called once
         // comp.ngOnInit(); is automatically called on instantiation

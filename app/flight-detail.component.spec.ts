@@ -65,8 +65,7 @@ describe('FlightDetailComponent', function () {
         checking the rendered page for state values when the members are 
         private).
         */
-        const serviceSpy = spyOn(fakeFlightService, 'getFlight')
-            .and.returnValue(Promise.resolve(FLIGHTS[0]));
+        const serviceSpy = spyOn(fakeFlightService, 'getFlight').and.callThrough();
 
         // expect fake service to have been called once
         // comp.ngOnInit(); is automatically called on instantiation
