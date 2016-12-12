@@ -84,10 +84,12 @@ describe('FlightComponent', function () {
         listEls = fixture.debugElement.queryAll(By.css('.list-group-item'));
         expect(listEls.length).toEqual(8,
             'should display flight numbers for id search (fakeAsync)');
-        expect(listEls[0].nativeElement.innerText).toEqual('EZ001Test: LPT to SXF',
-            'element [0] should be "EZ001Test: LPT to SXF"');
-        expect(listEls[7].nativeElement.innerText).toEqual('EZ008: LGW to SXF',
-            'element [7] should be "EZ008: LGW to SXF"');
+        expect(listEls[0].nativeElement.innerText)
+            .toEqual('EZ001Test: London Luton (LTN) to Berlin Schoenefeld (SXF) on 6/30/2016, 7:40 AM',
+            'element [0] should be "EZ001Test: London Luton (LTN) to Berlin Schoenefeld (SXF) on 6/30/2016, 7:40 AMF"');
+        expect(listEls[7].nativeElement.innerText)
+            .toEqual('EZ008: London Luton (LTN) to Berlin Schoenefeld (SXF) on 7/1/2016, 8:55 PM',
+            'element [7] should be "EZ008: London Luton (LTN) to Berlin Schoenefeld (SXF) on 7/1/2016, 8:55 PM"');
     }));
 
     it('should display flight numbers for flight number search (fakeAsync)', fakeAsync(() => {
@@ -102,8 +104,9 @@ describe('FlightComponent', function () {
         listEls = fixture.debugElement.queryAll(By.css('.list-group-item'));
         expect(listEls.length).toEqual(2,
             'should display flight numbers for flight number search (fakeAsync)');
-        expect(listEls[0].nativeElement.innerText).toEqual('EZ002: LGW to SXF',
-            'element [0] should be "EZ002: LGW to SXF"');
+        expect(listEls[0].nativeElement.innerText)
+            .toEqual('EZ002: London Luton (LTN) to Berlin Schoenefeld (SXF) on 6/30/2016, 9:40 AM',
+            'element [0] should be "EZ002: London Luton (LTN) to Berlin Schoenefeld (SXF) on 6/30/2016, 9:40 AM"');
     }));
 
     it('should display flight numbers for departure airport search (fakeAsync)', fakeAsync(() => {
@@ -118,8 +121,9 @@ describe('FlightComponent', function () {
         listEls = fixture.debugElement.queryAll(By.css('.list-group-item'));
         expect(listEls.length).toEqual(1,
             'should display flight numbers for departure airport search (fakeAsync)');
-        expect(listEls[0].nativeElement.innerText).toEqual('EZ003: BRS to BHI',
-            'element [0] should be "EZ003: BRS to BHI"');
+        expect(listEls[0].nativeElement.innerText)
+            .toEqual('EZ003: Bristol (BRS) to Birmingham (BHI) on 6/30/2016, 6:55 PM',
+            'element [0] should be "EZ003: Bristol (BRS) to Birmingham (BHI) on 6/30/2016, 6:55 PM"');
     }));
 
     it('should display flight numbers for arrival airport search (fakeAsync)', fakeAsync(() => {
@@ -134,8 +138,9 @@ describe('FlightComponent', function () {
         listEls = fixture.debugElement.queryAll(By.css('.list-group-item'));
         expect(listEls.length).toEqual(1,
             'should display flight numbers for arrival airport search (fakeAsync)');
-        expect(listEls[0].nativeElement.innerText).toEqual('EZ003: BRS to BHI',
-            'element [0] should be "EZ003: BRS to BHI"');
+        expect(listEls[0].nativeElement.innerText)
+            .toEqual('EZ003: Bristol (BRS) to Birmingham (BHI) on 6/30/2016, 6:55 PM',
+            'element [0] should be "EZ003: Bristol (BRS) to Birmingham (BHI) on 6/30/2016, 6:55 PMI"');
     }));
 
     it('should not display flight numbers for an invalid search term (fakeAsync)', fakeAsync(() => {

@@ -1,6 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { async, fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
 import { SpyLocation } from '@angular/common/testing';
