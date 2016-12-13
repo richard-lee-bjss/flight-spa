@@ -1,6 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { async, fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
 import { SpyLocation } from '@angular/common/testing';
@@ -66,8 +65,7 @@ describe('FlightDetailComponent', function () {
         checking the rendered page for state values when the members are 
         private).
         */
-        const serviceSpy = spyOn(fakeFlightService, 'getFlight')
-            .and.returnValue(Promise.resolve(FLIGHTS[0]));
+        const serviceSpy = spyOn(fakeFlightService, 'getFlight').and.callThrough();
 
         // expect fake service to have been called once
         // comp.ngOnInit(); is automatically called on instantiation

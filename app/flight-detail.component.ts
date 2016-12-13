@@ -17,7 +17,7 @@ export class FlightDetailComponent implements OnInit {
 
     title = 'Flight Details';
 
-    @Input()
+    // @Input()
     flight: Flight;
 
     constructor(
